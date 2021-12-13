@@ -63,5 +63,5 @@ echo "No Malware found on the system."
 fi
 fi
 fi
-
+exit
 # MBBR finished
