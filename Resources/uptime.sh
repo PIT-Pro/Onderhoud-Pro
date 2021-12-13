@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Uptime to check
 limit="21"
