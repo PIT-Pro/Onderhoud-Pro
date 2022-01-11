@@ -9,12 +9,12 @@ if [ -e $LOGFILE ]
 then
     echo "maintenance_log.txt exists, writing output to file.."
 else
-    touch Users/Public/maintenance_log.txt
+    echo "maintenance_log.txt does not exist, creating file.."
 fi
 
 echo "START OF SCRIPT" >> $LOGFILE
 echo "Checking MBBR.." | tee -a $LOGFILE
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" -o >> $LOGFILE
+/bin/bash -c "$(curl -fsSLo https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" >> $LOGFILE
 echo "Purging caches.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/purge_cache.sh)" | >> $LOGFILE
 echo "Clearing browser caches.." | tee -a $LOGFILE
