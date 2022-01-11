@@ -20,13 +20,13 @@ echo "Purging caches.." | tee -a $LOGFILE
 echo "Clearing browser caches.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/clear_browser_caches.sh)" >> $LOGFILE
 
-pitproCareLastTime="$(/usr/bin/stat -f "%Sm" -t "%Y%m%d" "/Applications/Utilities/Maintenance.app")" #get the last time PITPro Care has run
+MaintenanceLastTime="$(/usr/bin/stat -f "%Sm" -t "%Y%m%d" "/Applications/Utilities/Maintenance.app")" #get the last time PITPro Care has run
 currentDate="$(/bin/date +%Y%m%d)" #get the current date
 
-echo $pitproCareLastTime >> $LOGFILE
+echo $MaintenanceLastTime >> $LOGFILE
 echo $currentDate >> $LOGFILE
-echo "END OF SCRIPT" >> $LOGFILE
 
 /Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="Herstart aanbevolen" description="Herstarten is aanbevolen. Sla belangrijke data op voordat je op Herstart klikt." acceptLabel="Herstart" closeLabel="Niet nu" && sudo -u $username osascript -e 'tell app "loginwindow" to Â«event aevtrrstÂ»' || echo "Restart not accepted by user." | tee -a $LOGFILE
+echo "END OF SCRIPT" >> $LOGFILE
 
 exit 0
