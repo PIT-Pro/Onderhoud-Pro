@@ -2,7 +2,7 @@
 # Uptime to check
 limit="7"
 # Get uptime.
-days=$(uptime)
+days=$(uptime | grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" " }'))
 # Get logged in user.
 username=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");'`
 if [ "$days" -gt "$limit" ]; then
@@ -12,5 +12,3 @@ else
     echo "Machine does not need to reboot, uptime less than $limit days"
 fi
 # Uptime check finished
-
- #| grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" " }')
