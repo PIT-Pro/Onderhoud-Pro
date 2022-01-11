@@ -14,7 +14,7 @@ fi
 
 echo "START OF SCRIPT" >> $LOGFILE
 echo "Checking MBBR.." | tee -a $LOGFILE
-/bin/bash -c "$(curl -fsSLo https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" >> $LOGFILE
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" >> $LOGFILE
 echo "Purging caches.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/purge_cache.sh)" | >> $LOGFILE
 echo "Clearing browser caches.." | tee -a $LOGFILE
