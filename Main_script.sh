@@ -3,28 +3,29 @@ loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConso
 #
 /Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="PIT Pro Onderhoud" description="PIT Pro onderhoud gaat starten. Je computer kan trager aanvoelen, maar je kunt wel doorwerken." closeLabel="Oké" timeout="59" && proceed=1
 #
+LOGFILE=/Users/Shared/maintenance_log.txt
 
-if [ -e Users/Public/maintenance_log.txt ]
+if [ -e $LOGFILE ]
 then
     echo "maintenance_log.txt exists, writing output to file.."
 else
     touch Users/Public/maintenance_log.txt
 fi
 
-echo "Checking MBBR.." | tee Users/Public/maintenance_log.txt
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" >> Users/Public/maintenance_log.txt
-echo "Purging caches.." | tee Users/Public/maintenance_log.txt
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/purge_cache.sh)" >> Users/Public/maintenance_log.txt
-echo "Clearing browser caches.." | tee Users/Public/maintenance_log.txt
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/clear_browser_caches.sh)" >> Users/Public/maintenance_log.txt
-echo "Checking uptime.." | tee Users/Public/maintenance_log.txt
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/uptime.sh)" >> Users/Public/maintenance_log.txt
+echo "Checking MBBR.." | tee $LOGFILE
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" >> $LOGFILE
+echo "Purging caches.." | tee $LOGFILE
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/purge_cache.sh)" >> $LOGFILE
+echo "Clearing browser caches.." | tee $LOGFILE
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/clear_browser_caches.sh)" >> $LOGFILE
+echo "Checking uptime.." | tee $LOGFILE
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/uptime.sh)" >> $LOGFILE
 
 pitproCareLastTime="$(/usr/bin/stat -f "%Sm" -t "%Y%m%d" "/Applications/Utilities/Maintenance.app")" #get the last time PITPro Care has run
 currentDate="$(/bin/date +%Y%m%d)" #get the current date
 
-echo $pitproCareLastTime >> Users/Public/maintenance_log.txt
-echo $currentDate >> Users/Public/maintenance_log.txt
+echo $pitproCareLastTime >> $LOGFILE
+echo $currentDate >> $LOGFILE
 
 /Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="PIT Pro Onderhoud" action=notify description="PIT Pro onderhoud is klaar!" closeLabel="Oké"
 
