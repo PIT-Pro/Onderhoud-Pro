@@ -12,6 +12,7 @@ else
     touch Users/Public/maintenance_log.txt
 fi
 
+echo "START OF SCRIPT" >> $LOGFILE
 echo "Checking MBBR.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" >> $LOGFILE
 echo "Purging caches.." | tee -a $LOGFILE
@@ -26,7 +27,7 @@ currentDate="$(/bin/date +%Y%m%d)" #get the current date
 
 echo $pitproCareLastTime >> $LOGFILE
 echo $currentDate >> $LOGFILE
-
+echo "END OF SCRIPT" >> $LOGFILE
 /Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="PIT Pro Onderhoud" action=notify description="PIT Pro onderhoud is klaar!" closeLabel="Oké"
 
 exit 0
