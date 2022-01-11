@@ -20,7 +20,6 @@ echo "Purging caches.." | tee -a $LOGFILE
 echo "Clearing browser caches.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/clear_browser_caches.sh)" >> $LOGFILE
 echo "Checking uptime.." | tee -a $LOGFILE
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/uptime.sh)" >> $LOGFILE
 
 pitproCareLastTime="$(/usr/bin/stat -f "%Sm" -t "%Y%m%d" "/Applications/Utilities/Maintenance.app")" #get the last time PITPro Care has run
 currentDate="$(/bin/date +%Y%m%d)" #get the current date
@@ -28,6 +27,7 @@ currentDate="$(/bin/date +%Y%m%d)" #get the current date
 echo $pitproCareLastTime >> $LOGFILE
 echo $currentDate >> $LOGFILE
 echo "END OF SCRIPT" >> $LOGFILE
-/Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="PIT Pro Onderhoud" action=notify description="PIT Pro onderhoud is klaar!" closeLabel="Oké"
+
+/Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="Herstart aanbevolen" description="Herstarten is aanbevolen. Sla belangrijke data op." acceptLabel="Herstart" closeLabel="Niet nu" timeout="60" && sudo -u $username osascript -e 'tell app "loginwindow" to Â«event aevtrrstÂ»' || echo "Restart not accepted by user."
 
 exit 0
