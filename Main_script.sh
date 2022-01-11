@@ -12,13 +12,13 @@ else
     touch Users/Public/maintenance_log.txt
 fi
 
-echo "Checking MBBR.." | tee $LOGFILE
+echo "Checking MBBR.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/MBBR_check.sh)" >> $LOGFILE
-echo "Purging caches.." | tee $LOGFILE
+echo "Purging caches.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/purge_cache.sh)" >> $LOGFILE
-echo "Clearing browser caches.." | tee $LOGFILE
+echo "Clearing browser caches.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/clear_browser_caches.sh)" >> $LOGFILE
-echo "Checking uptime.." | tee $LOGFILE
+echo "Checking uptime.." | tee -a $LOGFILE
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Maintenance/main/Resources/uptime.sh)" >> $LOGFILE
 
 pitproCareLastTime="$(/usr/bin/stat -f "%Sm" -t "%Y%m%d" "/Applications/Utilities/Maintenance.app")" #get the last time PITPro Care has run
