@@ -14,11 +14,11 @@ fi
 
 echo "START OF SCRIPT" >> $LOGFILE
 echo "Checking MBBR.." | tee -a $LOGFILE
-. MBBR_check.sh >> $LOGFILE
+. MBBR_check.sh | tee -a $LOGFILE
 echo "Purging caches.." | tee -a $LOGFILE
-. purge_cache.sh >> $LOGFILE
+. purge_cache.sh | tee -a $LOGFILE
 echo "Clearing browser caches.." | tee -a $LOGFILE
-. clear_browser_caches.sh >> $LOGFILE
+. clear_browser_caches.sh | tee -a $LOGFILE
 
 MaintenanceLastTime="$(/usr/bin/stat -f "%Sm" -t "%Y%m%d" "/Applications/Utilities/Maintenance.app")" #get the last time PITPro Care has run
 currentDate="$(/bin/date +%Y%m%d)" #get the current date
