@@ -1,8 +1,7 @@
 #!/bin/bash
 
 #zoek ingelogde user
-loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");'`
-#verwijder safari cache
+loggedInUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ && ! /loginwindow/ { print $3 }' )#verwijder safari cache
 rm -R /Users/$loggedInUser/Library/Caches/com.apple.Safari/WebKitCache/
 #verwijder chrome cache
 rm -R ~/Library/Caches/Google/Chrome/Default/Cache
