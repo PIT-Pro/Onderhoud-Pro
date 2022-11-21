@@ -11,11 +11,11 @@ fi
 rm -f /Library/Preferences/com.apple.SoftwareUpdate.plist
 
 # Kill and restart Software Update
-while launchctl kill 9 system/com.apple.softwareupdated; do  >> "$LOGFILE"
+while launchctl kill 9 system/com.apple.softwareupdated; do
     sleep 1
 done
 
-launchctl kickstart system/com.apple.softwareupdated  >> "$LOGFILE"
+launchctl kickstart system/com.apple.softwareupdated
     sleep 1
 mv /Library/Receipts/InstallHistory.plist /Library/Receipts/InstallHistory.plist.old
     sleep 3
