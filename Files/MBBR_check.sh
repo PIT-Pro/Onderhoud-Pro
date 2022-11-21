@@ -5,7 +5,7 @@ LOGFILE=/Library/Addigy/PIT\ Pro/maintenance_log.txt
 
 set -e
 log_path="/Library/Addigy/logs/mbbr"
-timestamp=$(date +"%Y-%m-%d-%H-%M")
+timestamp=$(date +%Y/%m/%d\ %H:%M:%S)
 log_name="${log_path}/scan-${timestamp}.log"
 
 # Check for mbbr installation

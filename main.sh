@@ -4,8 +4,7 @@ loggedInUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ &&
 /Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="PIT Pro Maintenance" description="PIT Pro onderhoud gaat starten. Je computer kan tijdelijk traag aanvoelen." closeLabel="Oké"  && proceed=1
 
 LOGFILE=/Library/Addigy/PIT\ Pro/maintenance_log.txt
-MaintenanceLastTime="$(/usr/bin/stat -f "%Sm" -t "%Y%m%d" "/Applications/Utilities/Maintenance.app")" #get the last time PITPro Care has run
-currentDate="$(/bin/date +%Y%m%d)" #get the current date
+currentDate=$(date +%Y/%m/%d\ %H:%M:%S)
 
 if [ -e "$LOGFILE" ];
 then
@@ -17,7 +16,6 @@ fi
 
 echo "START OF SCRIPT" >> "$LOGFILE"
 
-echo "$MaintenanceLastTime" >> "$LOGFILE"
 echo "$currentDate" >> "$LOGFILE"
 
 echo "Checking MBBR.." >> "$LOGFILE"
