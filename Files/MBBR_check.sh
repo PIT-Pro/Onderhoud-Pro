@@ -1,6 +1,8 @@
 #!/bin/bash
 # MBBR started!
 
+LOGFILE=/Library/Addigy/PIT\ Pro/maintenance_log.txt
+
 set -e
 log_path="/Library/Addigy/logs/mbbr"
 timestamp=$(date +"%Y-%m-%d-%H-%M")
@@ -8,7 +10,7 @@ log_name="${log_path}/scan-${timestamp}.log"
 
 # Check for mbbr installation
 if [ !  -f /usr/local/bin/mbbr ]; then
-    echo "Error: mbbr bin file not found. Make sure Malwarebytes Breach Remediation is installed." 1>&2
+    echo "Error: mbbr bin file not found. Make sure Malwarebytes Breach Remediation is installed." >> "$LOGFILE"
     exit 1
     
 else
@@ -27,7 +29,7 @@ else
     
     # Parse the output
     if [ ! -f $log_name ]; then
-        echo "Error: log file wasn't found. There appears to be a problem with your mbbr binary." 1>&2
+        echo "Error: log file wasn't found. There appears to be a problem with your mbbr binary." >> "$LOGFILE"
         exit 1
         
     else
@@ -38,13 +40,13 @@ else
         
         # Check for Malwarebytes Invalid License Error.
         if [[ "$license" != "" ]]; then
-            echo "Error: License key invalid."
+            echo "Error: License key invalid." >> "$LOGFILE"
             exit 1
         fi
         
         echo $status
         if [[ "$status" != "" ]]; then
-            echo "MALWARE DETECTED!" 1>&2
+            echo "MALWARE DETECTED!" >> "$LOGFILE"
             
             # Push ticket with malware statistics.
             curl -X POST https://$(/Library/Addigy/go-agent agent realm).addigy.com/submit_ticket/ -H 'content-type: application/json' -d "{\"agentid\": \"$(/Library/Addigy/go-agent agent agentid)\", \"orgid\":\"$(/Library/Addigy/go-agent agent orgid)\", \"name\":\"MBBR\", \"description\":\"Malware detected: ${status}. $(echo $files | tr '\n' ' ')\"}"
@@ -59,7 +61,7 @@ else
                 exit 1
             fi
         else
-            echo "No Malware found on the system."
+            echo "No Malware found on the system." >> "$LOGFILE"
         fi
     fi
 fi
