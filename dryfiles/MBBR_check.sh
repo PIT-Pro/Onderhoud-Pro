@@ -50,7 +50,7 @@ else
             curl -X POST https://$(/Library/Addigy/go-agent agent realm).addigy.com/submit_ticket/ -H 'content-type: application/json' -d "{\"agentid\": \"$(/Library/Addigy/go-agent agent agentid)\", \"orgid\":\"$(/Library/Addigy/go-agent agent orgid)\", \"name\":\"MBBR\", \"description\":\"Malware detected: ${status}. $(echo $files | tr '\n' ' ')\"}"
             
             # Push notification to end-user prompting reboot.
-            username=$(/usr/bin/python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+            username=$(loggedInUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ && ! /loginwindow/ { print $3 }')
             if [ "$username" != "" ]; then
                 /Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="Malware Gevonden" description="We hebben Malware gevonden, herstart om te verwijderen!" closeLabel="Niet nu" acceptLabel="Herstart" && sudo -u $username osascript -e 'tell app "loginwindow" to Â«event aevtrrstÂ»'
                 exit 1
