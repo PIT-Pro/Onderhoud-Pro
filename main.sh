@@ -33,8 +33,12 @@ kickstart_softwareupdate(){
 }
 
 reboot_mac(){
-    shutdown -r now
+    shutdown -r
     exit 0
+}
+
+self-destruct(){
+    rm -rf "/Library/Addigy/Onderhoud Pro (1.0)"
 }
 
 #Run functions
@@ -43,4 +47,5 @@ swiftDialog
 purge_caches
 kickstart_softwareupdate
 sleep 5
+self-destruct
 reboot_mac
