@@ -34,12 +34,12 @@ kickstart_softwareupdate(){
 
 reboot_mac(){
     shutdown -r now
+    exit 0
 }
 
 check_log
 swiftDialog
+purge_caches
 kickstart_softwareupdate
 sleep 5
 reboot_mac
-
-exit 0
