@@ -40,6 +40,6 @@ check_log
 swiftDialog
 kickstart_softwareupdate
 sleep 5
-#reboot_mac
+reboot_mac
 
 exit 0
