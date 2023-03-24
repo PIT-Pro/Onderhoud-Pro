@@ -38,7 +38,7 @@ reboot_mac(){
 }
 
 self-destruct(){
-    rm -rf "/Library/Addigy/Onderhoud Pro (1.0)"
+    rm -rf "/Library/Addigy/ansible/packages/Onderhoud Pro (1.0)/main.sh"
 }
 
 #Run functions
@@ -47,5 +47,5 @@ swiftDialog
 purge_caches
 kickstart_softwareupdate
 sleep 5
-self-destruct
 reboot_mac
+self-destruct
