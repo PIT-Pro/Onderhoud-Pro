@@ -1,9 +1,8 @@
 {
-  "title" : "Onderhoud Pro",,
+  "title" : "Onderhoud Pro",
   "icon" : "https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Files/logo.png",
+  "overlayicon" : "warning",
   "hideicon" : 1,
   "infobutton" : 1,
-  "quitoninfo" : 1,
-  "image" : "/Users/Shared/Pictures/Image 1.jpg",
-  "imagecaption" : "Test image 1"
+  "quitoninfo" : 1
 }
