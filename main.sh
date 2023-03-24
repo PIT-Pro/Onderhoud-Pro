@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#Variables
-loggedInUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ && ! /loginwindow/ { print $3 }')
-LOGFILE=/Library/Addigy/PIT\ Pro/Onderhoud-Pro_log.txt
-currentDate=$(date +%Y/%m/%d\ %H:%M:%S)
+#Onderhoud Pro, PIT Pro B.V
+#Versie 1.0
 
+#Variables
+LOGFILE=/Library/Addigy/PIT\ Pro/Onderhoud-Pro_log.txt
 
 #Functions
 check_log(){
@@ -37,6 +37,7 @@ reboot_mac(){
     exit 0
 }
 
+#Run functions
 check_log
 swiftDialog
 purge_caches
