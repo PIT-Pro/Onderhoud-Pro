@@ -14,15 +14,12 @@ else
 fi
 
 #Run Dialog
-dialog --jsonfile "https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/dialog.json"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/dialog.sh)"
 
 echo "Purging caches.."
-#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Files/purge_cache.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/caches.sh)"
 
 echo "Kickstarting softwareupdated"
-#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Files/softwareupdated.sh)" >> "$LOGFILE"
-
-#/Library/Addigy/macmanage/MacManage.app/Contents/MacOS/MacManage action=notify title="Herstart aanbevolen" description="Restarting your Mac is highly recommended. Save your work before clicking on Restart." acceptLabel="Restart" closeLabel="Not now" && sudo -u "$loggedInUser" osascript -e 'tell app "loginwindow" to Â«event aevtrrstÂ»' || echo "Restart not accepted by user." >> "$LOGFILE"
-echo "END OF SCRIPT"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/softwareupdate.sh)"
 
 exit 0
