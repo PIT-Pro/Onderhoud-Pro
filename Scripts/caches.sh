@@ -59,16 +59,6 @@ remove_dropbox_cache(){
         fi
 }
 
-purge_dns(){
-    dscacheutil -flushcache;killall -HUP mDNSResponder
-    purge
-}
-
-renew_dhcp_lease(){
-    ipconfig set en0 DHCP
-    ipconfig set en1 DHCP
-}
-
 #Run functions
 remove_chrome_cache
 remove_edge_cache
@@ -76,5 +66,3 @@ remove_saved_state_macOS_applications
 remove_googledrive_cache
 remove_dropbox_cache
 remove_Microsoft_365_caches
-purge_dns
-renew_dhcp_lease
