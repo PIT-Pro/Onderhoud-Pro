@@ -1,6 +1,11 @@
 # Maintenance
 ## Runnen bij problematiek op Mac.
+
+*Maakt nu gebruik van swiftDialog*
+
     • Cache purge van macOS
     • Cache purge van Edge, Safari en Chrome
-    • MBBR check
-    • Uptime check met mogelijke reboot
+    • Cache purge Dropbox, Google Drive
+    • Cache purge van Microsoft 365 producten
+    • Verwijdert saved states applicaties op Mac
+    • Reboot
