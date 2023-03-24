@@ -5,7 +5,7 @@ loggedInUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ &&
 LOGFILE=/Library/Addigy/PIT\ Pro/Onderhoud-Pro_log.txt
 currentDate=$(date +%Y/%m/%d\ %H:%M:%S)
 
-dialog --title "Onderhoud Pro" --message "Click on the button below to start."
+dialog --icon "https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Files/logo.png" --title "Onderhoud Pro" --message "Click on the button below to start."
 
 if [ -e "$LOGFILE" ];
 then
