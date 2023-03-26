@@ -17,26 +17,29 @@ else
 fi
 }
 
-swiftDialog(){
 #Run swiftDialog
+swiftDialog(){
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/dialog.sh)"
 }
 
-purge_caches(){
 #Run purge of caches
+purge_caches(){
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/caches.sh)"
 }
 
-kickstart_softwareupdate(){
 #Kickstart Softwareupdated
+
+kickstart_softwareupdate(){
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/softwareupdate.sh)"
 }
 
+#..reboot Mac
 reboot_mac(){
-    shutdown -r
+    shutdown -r now
     exit 0
 }
 
+#self-destruct script for continuous operation from Self-Service
 self-destruct(){
     rm -rf "/Library/Addigy/ansible/packages/Onderhoud Pro (1.0)/main.sh"
 }
