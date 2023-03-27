@@ -4,9 +4,23 @@
 #Versie 1.0
 
 #Variables
-LOGFILE=/Library/Addigy/PIT\ Pro/Onderhoud-Pro_log.txt
+LOGFILE="/Library/Addigy/PIT Pro/Onderhoud-Pro_log.txt"
 
 #Functions
+check_log(){
+    if [ -e "$LOGFILE" ];
+then
+    echo "Onderhoud-Pro_log.txt exists, writing output to file.."
+else
+    echo "Onderhoud-Pro_log.txt does not exist, creating file.."
+    touch "/Library/Addigy/PIT Pro/Onderhoud-Pro_log.txt"
+fi
+}
+
+writeLog(){
+exec > >(tee "$LOGFILE") 2>&1
+echo "==> $(date "+%Y-%m-%d %H:%M:%S")"
+}
 
 #Installs swiftDialog if not found
 dialogCheck(){
@@ -35,20 +49,6 @@ dialogCheck(){
     /bin/rm -Rf "$tempDirectory"  
   else echo "Dialog found. Proceeding..."
   fi
-}
-
-check_log(){
-    if [ -e "$LOGFILE" ];
-then
-    echo "Onderhoud-Pro_log.txt exists, writing output to file.."
-    exec > >(tee $LOGFILE) 2>&1
-    echo "==> $(date "+%Y-%m-%d %H:%M:%S")"
-else
-    echo "Onderhoud-Pro_log.txt does not exist, creating file.."
-    touch "/Library/Addigy/PIT Pro/Onderhoud-Pro_log.txt"
-    exec > >(tee $LOGFILE) 2>&1
-    echo "==> $(date "+%Y-%m-%d %H:%M:%S")" 
-fi
 }
 
 #Run swiftDialog
@@ -82,8 +82,9 @@ self-destruct(){
 }
 
 #Run functions
-dialogCheck
 check_log
+writeLog
+dialogCheck
 swiftDialog
 purge_caches
 kickstart_softwareupdate
