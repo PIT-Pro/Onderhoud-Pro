@@ -47,7 +47,7 @@ else
     echo "Onderhoud-Pro_log.txt does not exist, creating file.."
     touch "/Library/Addigy/PIT Pro/Onderhoud-Pro_log.txt"
     exec > >(tee $LOGFILE) 2>&1
-    echo "==> $(date "+%Y-%m-%d %H:%M:%S")"
+    echo "==> $(date "+%Y-%m-%d %H:%M:%S")" 
 fi
 }
 
