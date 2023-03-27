@@ -78,7 +78,7 @@ check_reboot_mac(){
 
 finishDialog(){
     echo "Finishing.."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/dialog2.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/finishing.sh)"
 }
 
 #Run functions
