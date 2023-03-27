@@ -2,6 +2,7 @@
 
 #Onderhoud Pro, PIT Pro B.V
 #Versie 1.0
+#Check /Library/Addigy/PIT Pro/Onderhoud-Pro_log.txt voor logs
 
 #Variables
 LOGFILE="/Library/Addigy/PIT Pro/Onderhoud-Pro_log.txt"
@@ -86,8 +87,9 @@ check_log
 writeLog
 dialogCheck
 swiftDialog
-purge_caches
-kickstart_softwareupdate
 sleep 5
+purge_caches
+sleep 5
+kickstart_softwareupdate
 check_reboot_mac
 self-destruct
