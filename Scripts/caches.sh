@@ -9,9 +9,9 @@ googleDrive="/Applications/Google Drive.app"
 dropbox="/Applications/Dropbox.app"
 
 #Functions
-echo "removing Chrome caches.."
 remove_chrome_cache() {
     if [[ -d $googleChrome ]] ; then
+        echo "removing Chrome caches.."
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Cache"
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Code Cache"
     else
@@ -19,9 +19,10 @@ remove_chrome_cache() {
     fi
 }
 
-echo "removing edge caches.."
+
 remove_edge_cache() {
     if [[ -d $microsoftEdge ]]; then
+        echo "removing edge caches.."
         rm -rf "/Users/$loggedInUser/Library/Caches/Microsoft Edge/Default/Cache"
         rm -rf "/Users/$loggedInUser/Library/Caches/Microsoft Edge/Default/Code Cache"
     else
@@ -29,14 +30,16 @@ remove_edge_cache() {
     fi
 }
 
-echo "removing saved states.."
+
 remove_saved_state_macOS_applications(){
+    echo "removing saved states.."
     rm -rf "/Users/$loggedInUser/Library/Saved Application State/" 
 }
 
-echo "removing 365 caches.."
+
 remove_Microsoft_365_caches(){
     if [[ -d $microsoftOffice ]]; then
+        echo "removing 365 caches.."
         rm -rf "/Users/$loggedInUser/Library/Containers/com.Microsoft.OsfWebHost/Data"
         rm -rf "/Users/$loggedInUser/Library/Containers/com.microsoft.Office365ServiceV2/Data/Caches/com.microsoft.Office365ServiceV2"
         rm -rf "/Library/Containers/com.microsoft.Excel/Data/Library/Caches"
@@ -47,18 +50,18 @@ remove_Microsoft_365_caches(){
     fi
 }
 
-echo "removing Drive caches.."
 remove_googledrive_cache(){
     if [[ -d $googleDrive ]]; then
+        echo "removing Drive caches.."
         rm -rf "/Users/$loggedInUser//Library/Application Support/Google/DriveFS"
     else
         echo 'Google Drive not installed'
     fi
 }
 
-echo "removing Dropbox caches.."
 remove_dropbox_cache(){
         if [[ -d $dropbox ]]; then
+            echo "removing Dropbox caches.."
             rm -rf "/Users/$loggedInUser/Dropbox/.dropbox.cache"
         else
             echo "Dropbox not installed"
