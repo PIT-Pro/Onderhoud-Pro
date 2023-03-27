@@ -18,8 +18,6 @@ remove_chrome_cache() {
         echo "Google Chrome not installed"
     fi
 }
-
-
 remove_edge_cache() {
     if [[ -d $microsoftEdge ]]; then
         echo "removing edge caches.."
@@ -30,12 +28,10 @@ remove_edge_cache() {
     fi
 }
 
-
 remove_saved_state_macOS_applications(){
     echo "removing saved states.."
     rm -rf "/Users/$loggedInUser/Library/Saved Application State/" 
 }
-
 
 remove_Microsoft_365_caches(){
     if [[ -d $microsoftOffice ]]; then
