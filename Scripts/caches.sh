@@ -9,6 +9,7 @@ googleDrive="/Applications/Google Drive.app"
 dropbox="/Applications/Dropbox.app"
 
 #Functions
+echo "removing Chrome caches.."
 remove_chrome_cache() {
     if [[ -d $googleChrome ]] ; then
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Cache"
@@ -18,6 +19,7 @@ remove_chrome_cache() {
     fi
 }
 
+echo "removing edge caches.."
 remove_edge_cache() {
     if [[ -d $microsoftEdge ]]; then
         rm -rf "/Users/$loggedInUser/Library/Caches/Microsoft Edge/Default/Cache"
@@ -27,10 +29,12 @@ remove_edge_cache() {
     fi
 }
 
+echo "removing saved states.."
 remove_saved_state_macOS_applications(){
     rm -rf "/Users/$loggedInUser/Library/Saved Application State/" 
 }
 
+echo "removing 365 caches.."
 remove_Microsoft_365_caches(){
     if [[ -d $microsoftOffice ]]; then
         rm -rf "/Users/$loggedInUser/Library/Containers/com.Microsoft.OsfWebHost/Data"
@@ -43,6 +47,7 @@ remove_Microsoft_365_caches(){
     fi
 }
 
+echo "removing Drive caches.."
 remove_googledrive_cache(){
     if [[ -d $googleDrive ]]; then
         rm -rf "/Users/$loggedInUser//Library/Application Support/Google/DriveFS"
@@ -51,6 +56,7 @@ remove_googledrive_cache(){
     fi
 }
 
+echo "removing Dropbox caches.."
 remove_dropbox_cache(){
         if [[ -d $dropbox ]]; then
             rm -rf "/Users/$loggedInUser/Dropbox/.dropbox.cache"
