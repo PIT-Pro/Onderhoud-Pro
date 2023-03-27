@@ -8,7 +8,7 @@ LOGFILE=/Library/Addigy/PIT\ Pro/Onderhoud-Pro_log.txt
 
 #Functions
 check_log(){
-if [ -e "$LOGFILE" ];
+    if [ -e "$LOGFILE" ];
 then
     echo "Onderhoud-Pro_log.txt exists, writing output to file.."
 else
