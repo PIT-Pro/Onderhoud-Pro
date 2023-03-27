@@ -34,9 +34,8 @@ kickstart_softwareupdate(){
 }
 
 #..reboot Mac
-reboot_mac(){
-    shutdown -r now
-    exit 0
+check_reboot_mac(){
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/PIT-Pro/Onderhoud-Pro/main/Scripts/reboot.sh)"
 }
 
 #self-destruct script for continuous operation from Self-Service
@@ -50,5 +49,5 @@ swiftDialog
 purge_caches
 kickstart_softwareupdate
 sleep 5
-reboot_mac
+check_reboot_mac
 self-destruct
