@@ -5,7 +5,7 @@ dialog="/usr/local/bin/dialog"
 dialogTitle="Onderhoud Pro - Een herstart is nodig"
 loggedInUser=$(/bin/ls -l /dev/console | /usr/bin/awk '{ print $3 }')
 minDays=7
-maxDays=15
+maxDays=14
 days=$(uptime | awk '{ print $4 }' | sed 's/,//g')
 num=$(uptime | awk '{ print $3 }')
 
