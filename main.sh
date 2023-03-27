@@ -11,11 +11,9 @@ check_log(){
     if [ -e "$LOGFILE" ];
 then
     echo "Onderhoud-Pro_log.txt exists, writing output to file.."
-    exec >> Onderhoud-Pro_log.txt
 else
     echo "Onderhoud-Pro_log.txt does not exist, creating file.."
     touch "/Library/Addigy/PIT Pro/Onderhoud-Pro_log.txt"
-    exec >> Onderhoud-Pro_log.txt
 fi
 }
 
