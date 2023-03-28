@@ -61,6 +61,17 @@ remove_firefox_cache() {
         echo "Firefox not installed"
     fi
 }
+
+remove_safari_cache(){
+    #com.apple.Safari needs Terminal with FDA through Security and Privacy settings
+    rm -Rf /Users/$loggedInUser/Library/Caches/com.apple.Safari
+    rm -Rf /Users/$loggedInUser/Library/Cookies/Cookies.binarycookies
+    rm -Rf /Users/$loggedInUser/Library/Preferences/com.apple.Safari.SafeBrowsingt.plist
+    rm -Rf /Users/$loggedInUser/Library/Preferences/com.apple.Safari.PasswordBreachAgent.plist
+    rm -Rf /Users/$loggedInUser/Library/Preferences/com.apple.SafariCloudHistoryPushAgent.plist
+    rm -Rf /Users/$loggedInUser/Library/Preferences/com.apple.SafariServices.plist
+
+}
 remove_saved_state_macOS_applications(){
     echo "removing saved states.."
     rm -rf "/Users/$loggedInUser/Library/Saved Application State/" 
