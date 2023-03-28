@@ -17,6 +17,7 @@ close_all_apps(){
     tell application "Microsoft Outlook" to if it is running then quit
     tell application "Microsoft Excel" to if it is running then quit
     tell application "Microsoft Powerpoint" to if it is running then quit
+    tell application "Microsoft Teams" to if it is running then quit
     tell application "Microsoft Edge" to if it is running then quit
     tell application "Google Drive" to if it is running then quit
     tell application "Dropbox" to if it is running then quit
@@ -57,6 +58,7 @@ remove_Microsoft_365_caches(){
         rm -rf "/Library/Containers/com.microsoft.Excel/Data/Library/Caches"
         rm -rf "/Library/Containers/com.microsoft.Word/Data/Library/Caches"
         rm -rf "/Library/Containers/com.microsoft.Powerpoint/Data/Library/Caches"
+        rm -rf "/Users/thomasboom/Library/Application Support/Microsoft/Teams"
     else
         echo "Microsoft 365 not installed"
     fi
