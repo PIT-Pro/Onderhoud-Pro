@@ -8,6 +8,17 @@ microsoftOffice="/Applications/Microsoft Excel.app"
 googleDrive="/Applications/Google Drive.app"
 dropbox="/Applications/Dropbox.app"
 
+#Close all running apps
+
+close_all_apps(){
+osascript <<EOD
+tell application "System Events" to set quitapps to name of every application process whose visible is true and name is not "Finder"
+repeat with closeall in quitapps
+quit application closeall
+end repeat
+EOD
+}
+
 #Functions
 remove_chrome_cache() {
     if [[ -d $googleChrome ]] ; then
@@ -65,6 +76,7 @@ remove_dropbox_cache(){
 }
 
 #Run functions
+close_all_apps
 remove_chrome_cache
 remove_edge_cache
 remove_saved_state_macOS_applications

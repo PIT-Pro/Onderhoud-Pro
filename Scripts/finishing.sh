@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Variables
+#Variables
 dialog=/usr/local/bin/dialog
 
 runDialog(){
