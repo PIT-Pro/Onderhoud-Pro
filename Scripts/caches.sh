@@ -7,6 +7,7 @@ microsoftEdge="/Applications/Microsoft Edge.app"
 microsoftOffice="/Applications/Microsoft Excel.app"
 googleDrive="/Applications/Google Drive.app"
 dropbox="/Applications/Dropbox.app"
+firefox="/Applications/Firefox.app"
 
 #Close all running apps
 
@@ -21,15 +22,18 @@ close_all_apps(){
     tell application "Microsoft Edge" to if it is running then quit
     tell application "Google Drive" to if it is running then quit
     tell application "Dropbox" to if it is running then quit
+    tell application "Google Chrome" to if it is running then quit
+    tell application "Firefox" to if it is running then quit
 EOD
 }
 
 #Functions
 remove_chrome_cache() {
     if [[ -d $googleChrome ]] ; then
-        echo "removing Chrome caches.."
+        echo "removing Chrome caches and preference files.."
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Cache"
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Code Cache"
+        rm -rf "/Users/$loggedInUser/Library/Application Support/Google/Chrome"
     else
         echo "Google Chrome not installed"
     fi
@@ -37,14 +41,25 @@ remove_chrome_cache() {
 
 remove_edge_cache() {
     if [[ -d $microsoftEdge ]]; then
-        echo "removing edge caches.."
+        echo "removing edge caches and preference files.."
         rm -rf "/Users/$loggedInUser/Library/Caches/Microsoft Edge/Default/Cache"
         rm -rf "/Users/$loggedInUser/Library/Caches/Microsoft Edge/Default/Code Cache"
+        rm -rf "/Users/$loggedInUser/Library/Application Support/Microsoft Edge"
     else
         echo "Microsoft Edge not installed"
     fi
 }
 
+remove_firefox_cache() {
+    if [[ -d $firefox ]] ; then
+        echo "removing Firefox caches and preference files.."
+        rm -rf "/Users/$loggedInUser/Library/Caches/Firefox"
+        rm -rf "/Users/$loggedInUser/Library/Caches/Mozilla"
+        rm -rf "/Users/$loggedInUser/Library/Application Support/Firefox"
+    else
+        echo "Firefox not installed"
+    fi
+}
 remove_saved_state_macOS_applications(){
     echo "removing saved states.."
     rm -rf "/Users/$loggedInUser/Library/Saved Application State/" 
@@ -86,6 +101,7 @@ remove_dropbox_cache(){
 close_all_apps
 remove_chrome_cache
 remove_edge_cache
+remove_firefox_cache
 remove_saved_state_macOS_applications
 remove_googledrive_cache
 remove_dropbox_cache
