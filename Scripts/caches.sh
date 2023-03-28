@@ -24,6 +24,7 @@ close_all_apps(){
     tell application "Dropbox" to if it is running then quit
     tell application "Google Chrome" to if it is running then quit
     tell application "Firefox" to if it is running then quit
+    tell application "Safari" to if it is running then quit
 EOD
 }
 
