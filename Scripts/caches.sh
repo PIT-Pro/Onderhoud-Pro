@@ -34,6 +34,7 @@ remove_chrome_cache() {
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Cache"
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Code Cache"
         rm -rf "/Users/$loggedInUser/Library/Application Support/Google/Chrome"
+        echo "Enabling auto-update for Chrome.."
     else
         echo "Google Chrome not installed"
     fi
