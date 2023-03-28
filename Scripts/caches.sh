@@ -11,11 +11,15 @@ dropbox="/Applications/Dropbox.app"
 #Close all running apps
 
 close_all_apps(){
-osascript <<EOD
-tell application "System Events" to set quitapps to name of every application process whose visible is true and name is not "Finder"
-repeat with closeall in quitapps
-quit application closeall
-end repeat
+    echo "Closing all affected apps.."
+    osascript <<EOD
+    tell application "Microsoft Word" to if it is running then quit
+    tell application "Microsoft Outlook" to if it is running then quit
+    tell application "Microsoft Excel" to if it is running then quit
+    tell application "Microsoft Powerpoint" to if it is running then quit
+    tell application "Microsoft Edge" to if it is running then quit
+    tell application "Google Drive" to if it is running then quit
+    tell application "Dropbox" to if it is running then quit
 EOD
 }
 
@@ -29,6 +33,7 @@ remove_chrome_cache() {
         echo "Google Chrome not installed"
     fi
 }
+
 remove_edge_cache() {
     if [[ -d $microsoftEdge ]]; then
         echo "removing edge caches.."
