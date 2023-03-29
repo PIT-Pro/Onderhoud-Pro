@@ -86,7 +86,6 @@ check_log
 writeLog
 dialogCheck
 swiftDialog
-sleep 5
 purge_caches
 sleep 5
 kickstart_softwareupdate
