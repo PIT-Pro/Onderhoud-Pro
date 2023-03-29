@@ -93,4 +93,4 @@ kickstart_softwareupdate
 check_reboot_mac
 finishDialog
 
-
+exit 0
