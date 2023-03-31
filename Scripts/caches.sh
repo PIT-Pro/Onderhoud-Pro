@@ -83,7 +83,6 @@ remove_Microsoft_365_caches(){
         rm -rf "/Library/Containers/com.microsoft.Excel/Data/Library/Caches"
         rm -rf "/Library/Containers/com.microsoft.Word/Data/Library/Caches"
         rm -rf "/Library/Containers/com.microsoft.Powerpoint/Data/Library/Caches"
-        rm -rf "/Users/thomasboom/Library/Application Support/Microsoft/Teams"
     else
         echo "Microsoft 365 not installed"
     fi
