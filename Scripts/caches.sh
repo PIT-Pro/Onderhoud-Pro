@@ -34,7 +34,6 @@ remove_chrome_cache() {
         echo "removing Chrome caches and preference files.."
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Cache"
         rm -rf "/Users/$loggedInUser/Library/Caches/Google/Chrome/Default/Code Cache"
-        rm -rf "/Users/$loggedInUser/Library/Application Support/Google/Chrome"
         echo "Enabling auto-update for Chrome.."
     else
         echo "Google Chrome not installed"
@@ -46,7 +45,6 @@ remove_edge_cache() {
         echo "removing edge caches and preference files.."
         rm -rf "/Users/$loggedInUser/Library/Caches/Microsoft Edge/Default/Cache"
         rm -rf "/Users/$loggedInUser/Library/Caches/Microsoft Edge/Default/Code Cache"
-        rm -rf "/Users/$loggedInUser/Library/Application Support/Microsoft Edge"
     else
         echo "Microsoft Edge not installed"
     fi
@@ -57,7 +55,6 @@ remove_firefox_cache() {
         echo "removing Firefox caches and preference files.."
         rm -rf "/Users/$loggedInUser/Library/Caches/Firefox"
         rm -rf "/Users/$loggedInUser/Library/Caches/Mozilla"
-        rm -rf "/Users/$loggedInUser/Library/Application Support/Firefox"
     else
         echo "Firefox not installed"
     fi
