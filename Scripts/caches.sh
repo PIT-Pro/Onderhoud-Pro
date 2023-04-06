@@ -104,6 +104,7 @@ remove_dropbox_cache(){
         else
             echo "Dropbox not installed"
         fi
+        open -a "/Applications/Dropbox.app"
 }
 
 #Run functions
